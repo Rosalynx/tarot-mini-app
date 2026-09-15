@@ -44,10 +44,14 @@
 
             // Показываем результат
             document.getElementById("result").innerHTML = `
-                <h2>✨ ${card.name}</h2>
-                <p><b>Тема:</b> ${theme}</p>
-                <p>${interpretation}</p>
-            `;
+    <h2>✨ ${card.name}</h2>
+
+    <img src="${card.image}" width="300">
+
+    <p><b>Тема:</b> ${theme}</p>
+
+    <p>${interpretation}</p>
+`;
         }
 
     </script>
