@@ -260,36 +260,42 @@
            ЭКРАН 2А — ВСЕЛЕННАЯ МУРЧИТ
         ================================= */
 
-        function showUniverse() {
+        async function showUniverse() {
 
-            document.getElementById("app").innerHTML = `
+    const response = await fetch("messages.json");
 
-                <h2>
-                    🐾 Вселенная мурчит тебе...
-                </h2>
+    const messages = await response.json();
 
-
-                <p>
-                    ✨ Всё складывается
-                    в твою пользу.
-                </p>
-
-
-                <p>
-                    Иногда нужно просто
-                    позволить хорошему случиться.
-                </p>
+    const message =
+        messages[
+            Math.floor(
+                Math.random() * messages.length
+            )
+        ];
 
 
-                <button onclick="goHome()">
+    document.getElementById("app").innerHTML = `
 
-                    🍀 В начало
+        <h2>
+            🐾 Вселенная мурчит тебе...
+        </h2>
 
-                </button>
 
-            `;
-        }
+        <p class="interpretation">
 
+            ${message}
+
+        </p>
+
+
+        <button onclick="goHome()">
+
+            🍀 В начало
+
+        </button>
+
+    `;
+}
 
 
         /* =================================
