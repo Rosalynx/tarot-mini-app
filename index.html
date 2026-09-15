@@ -26,7 +26,43 @@
 
     <script>
 
-        async function getCard(theme) {
+        function showUniverse() {
+    document.getElementById("result").innerHTML = `
+        <h2>🐾 Вселенная мурчит тебе...</h2>
+
+        <p>✨ Всё складывается в твою пользу.</p>
+
+        <button onclick="goHome()">🍀 В начало</button>
+    `;
+}
+
+function showTarot() {
+    document.getElementById("result").innerHTML = `
+        <h2>🔮 Замурчательное Таро</h2>
+
+        <p>Загадай мысленно свой вопрос ✨</p>
+
+        <p><b>Выбери, что тебя интересует:</b></p>
+
+        <button onclick="getCard('advice')">🌟 Совет дня</button>
+        <button onclick="getCard('day')">☀️ Карта дня</button>
+        <button onclick="getCard('yes_no')">❓ Да / Нет</button>
+        <button onclick="getCard('love')">❤️ Любовь и отношения</button>
+        <button onclick="getCard('money')">💰 Финансы</button>
+        <button onclick="getCard('career')">💼 Работа и карьера</button>
+        <button onclick="getCard('family')">🏠 Дом и семья</button>
+
+        <br><br>
+
+        <button onclick="goHome()">🍀 В начало</button>
+    `;
+}
+
+function goHome() {
+    location.reload();
+}
+
+async function getCard(theme) {
 
             // Загружаем нашу колоду
             const response = await fetch("cards.json");
