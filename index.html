@@ -13,20 +13,44 @@
 
     <h1>🔮 ТАРО</h1>
 
-    <p>
-        Сформулируй мысленно свой вопрос.
-    </p>
+    <p>Сформулируй мысленно свой вопрос.</p>
 
-    <p>
-        <b>Выбери, что тебя интересует:</b>
-    </p>
+    <p><b>Выбери, что тебя интересует:</b></p>
 
-    <button>❤️ Любовь</button>
-    <button>💰 Финансы</button>
-    <button>💼 Карьера</button>
-    <button>🏠 Дом и семья</button>
-    <button>🔮 Будущее</button>
-    <button>🌟 Совет</button>
+    <button onclick="getCard('love')">❤️ Любовь</button>
+    <button onclick="getCard('money')">💰 Финансы</button>
+    <button onclick="getCard('career')">💼 Карьера</button>
+    <button onclick="getCard('family')">🏠 Дом и семья</button>
+    <button onclick="getCard('future')">🔮 Будущее</button>
+    <button onclick="getCard('advice')">🌟 Совет</button>
+
+    <div id="result"></div>
+
+
+    <script>
+
+        async function getCard(theme) {
+
+            // Загружаем нашу колоду
+            const response = await fetch("cards.json");
+
+            const cards = await response.json();
+
+            // Выбираем случайную карту
+            const card = cards[Math.floor(Math.random() * cards.length)];
+
+            // Получаем нужное толкование
+            const interpretation = card[theme] || "Пока нет толкования.";
+
+            // Показываем результат
+            document.getElementById("result").innerHTML = `
+                <h2>✨ ${card.name}</h2>
+                <p><b>Тема:</b> ${theme}</p>
+                <p>${interpretation}</p>
+            `;
+        }
+
+    </script>
 
 </body>
 </html>
