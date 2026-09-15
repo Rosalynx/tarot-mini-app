@@ -11,23 +11,30 @@
 
 <body>
 
-    <h1>🍀 МНЕ ПОВЕЗЁТ</h1>
-
-    <p>✨ Добро пожаловать во Вселенную, где всё может сложиться хорошо.</p>
-
-    <p><b>Что хочешь получить сегодня?</b></p>
-
-    <button onclick="showUniverse()">🐾 Вселенная мурчит тебе</button>
-
-    <button onclick="showTarot()">🔮 Замурчательное Таро</button>
-
-    <div id="result"></div>
-
+    <div id="app"></div>
 
     <script>
+    
+        function showHome() {
+    
+            document.getElementById("app").innerHTML = `
+        
+        <h1>🍀 МНЕ ПОВЕЗЁТ</h1>
 
+        <p>✨ Добро пожаловать во Вселенную, где всё может сложиться хорошо.</p>
+
+        <p><b>Что хочешь получить сегодня?</b></p>
+
+        <button onclick="showUniverse()">🐾 Вселенная мурчит тебе</button>
+
+        <button onclick="showTarot()">🔮 Замурчательное Таро</button>
+    `;
+}
+
+showHome();
+        
         function showUniverse() {
-    document.getElementById("result").innerHTML = `
+    document.getElementById("app").innerHTML = `
         <h2>🐾 Вселенная мурчит тебе...</h2>
 
         <p>✨ Всё складывается в твою пользу.</p>
@@ -37,7 +44,7 @@
 }
 
 function showTarot() {
-    document.getElementById("result").innerHTML = `
+    document.getElementById("app").innerHTML = `
         <h2>🔮 Замурчательное Таро</h2>
 
         <p>Загадай мысленно свой вопрос ✨</p>
@@ -76,7 +83,7 @@ async function getCard(theme) {
             const interpretation = card[theme] || "Пока нет толкования.";
 
             // Показываем результат
-            document.getElementById("result").innerHTML = `
+document.getElementById("app").innerHTML = `
     <h2>✨ ${card.name}</h2>
 
     <img src="${card.image}" width="300">
