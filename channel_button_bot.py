@@ -32,7 +32,7 @@ async def add_button(update: Update, context: ContextTypes.DEFAULT_TYPE):
         logging.exception("Не удалось добавить кнопку")
 
 def main():
-    app = Application.builder().token("6045156777:AAEgyE4E2vprUUJAN0m_dZuF8WIYyY2prs4").build()
+    app = Application.builder().token(TOKEN).build()
     app.add_handler(MessageHandler(filters.UpdateType.CHANNEL_POST, add_button))
     app.run_polling(
         allowed_updates=["channel_post"]
